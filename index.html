@@ -36,14 +36,55 @@
             display: flex;
             gap: 15px;
             margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        #add-url {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+        }
+        #add-url input {
+            padding: 10px;
+            width: 300px;
+        }
+        #add-url button {
+            padding: 10px;
+            background-color: #4ecca3;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-left: 10px;
         }
     </style>
+    <script>
+        function addUrl() {
+            const urlInput = document.getElementById('url-input');
+            const url = urlInput.value;
+
+            if (url) {
+                const newLink = document.createElement('a');
+                newLink.href = url.startsWith('http') ? url : 'http://' + url;
+                newLink.target = '_blank';
+                newLink.textContent = url;
+                newLink.style.marginRight = '10px';
+
+                document.getElementById('links').appendChild(newLink);
+                urlInput.value = '';
+            } else {
+                alert("Please enter a valid URL.");
+            }
+        }
+    </script>
 </head>
 <body>
     <h1>NebulaBrowser</h1>
     <input type="text" id="search-bar" placeholder="Search Google..." onkeydown="if (event.key === 'Enter') window.open('https://www.google.com/search?q=' + this.value, '_blank');" />
     <div id="top-bar">
         <input type="text" placeholder="Enter website URL" id="url-input" onkeydown="if (event.key === 'Enter') { window.open(this.value.startsWith('http') ? this.value : 'http://' + this.value, '_blank'); this.value=''; }" />
+    </div>
+    <div id="add-url">
+        <input type="text" id="add-url-input" placeholder="Add URL" />
+        <button onclick="addUrl()">+</button>
     </div>
     <div id="links">
         <a href="https://discord.com" target="_blank">Discord</a>
@@ -52,3 +93,4 @@
     </div>
 </body>
 </html>
+
