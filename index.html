@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NebulaBrowser</title>
+    <style>
+        body {
+            background-color: #1a1a2e;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #search-bar {
+            margin: 20px 0;
+            padding: 10px;
+            width: 400px;
+        }
+        #top-bar {
+            width: 100%;
+            padding: 10px;
+            background-color: #16213e;
+            display: flex;
+            justify-content: center;
+        }
+        #top-bar input {
+            width: 300px;
+            padding: 10px;
+        }
+        #links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>NebulaBrowser</h1>
+    <input type="text" id="search-bar" placeholder="Search Google..." onkeydown="if (event.key === 'Enter') window.open('https://www.google.com/search?q=' + this.value, '_blank');" />
+    <div id="top-bar">
+        <input type="text" placeholder="Enter website URL" id="url-input" onkeydown="if (event.key === 'Enter') { window.open(this.value.startsWith('http') ? this.value : 'http://' + this.value, '_blank'); this.value=''; }" />
+    </div>
+    <div id="links">
+        <a href="https://discord.com" target="_blank">Discord</a>
+        <a href="https://youtube.com" target="_blank">YouTube</a>
+        <a href="https://twitch.tv" target="_blank">Twitch</a>
+    </div>
+</body>
+</html>
